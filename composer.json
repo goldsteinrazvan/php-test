@@ -5,12 +5,12 @@
     "description": "Example PHP package.",
     "autoload": {
         "psr-4" : {
-            "Example\\" : "src/Example/"
+            "Shipping\\" : "src/Shipping"
         }
     },
     "autoload-dev": {
         "psr-4" : {
-            "Tests\\Example\\" : "tests/Example/"
+            "Tests\\Shipping\\" : "tests/Shipping/"
         }
     },
     "require": {
