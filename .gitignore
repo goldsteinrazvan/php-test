@@ -2,5 +2,4 @@ composer.phar
 /vendor/
 /.idea/
 .phpunit.result.cache
-/data/*
 .vscode
