@@ -15,10 +15,10 @@ class ZipCode
      * @param {string} zip_code
      * @return {boolval} true if zip code exists, otherwise false
      */
-    public function checkZipCode(string $zip_code): bool
+    public function validateZipCode(string $zip_code): bool
     {
       $zip_codes = $this->loadZipCodes();
-      return false;
+      return in_array($zip_code, $zip_codes);
     }
 
     /**

@@ -16,9 +16,11 @@ class Test extends TestCase
         $this->assertSame('hello', $shipping->getEstimatedDelivery('213231'));
     }
 
-    public function testZipCode(): void
+    public function testZipCodes(): void
     {   
         $zip_code = new ZipCode();
-        $this->assertSame(false, $zip_code->checkZipCode('213231'));
+        $this->assertSame(true, $zip_code->validateZipCode('89563-8733'));
+        $this->assertSame(false, $zip_code->validateZipCode('12312321321'));
+        $this->assertSame(false, $zip_code->validateZipCode('dsabcasdsa'));
     }
 }
