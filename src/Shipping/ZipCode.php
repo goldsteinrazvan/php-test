@@ -5,9 +5,17 @@ declare(strict_types=1);
 namespace Shipping;
 
 class ZipCode
-{
-    public function __construct()
+{   
+    private string $zip;
+
+    public function __construct(string $zip_code)
     {
+      $this->zip = $zip_code;
+    }
+    
+    public function getZipCode(): string
+    {
+      return $this->zip;
     }
 
     /**
@@ -15,10 +23,10 @@ class ZipCode
      * @param {string} zip_code
      * @return {boolval} true if zip code exists, otherwise false
      */
-    public function validateZipCode(string $zip_code): bool
+    public function isValid(): bool
     {
       $zip_codes = $this->loadZipCodes();
-      return in_array($zip_code, $zip_codes);
+      return in_array($this->zip, $zip_codes);
     }
 
     /**

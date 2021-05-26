@@ -9,11 +9,12 @@ use Shipping\ZipCode;
 
 class ZipCodeTest extends TestCase
 {
-    public function testValidateZipCode(): void
+    public function testIsValid(): void
     {   
-        $zip_code = new ZipCode();
-        $this->assertSame(true, $zip_code->validateZipCode('89563-8733'));
-        $this->assertSame(false, $zip_code->validateZipCode('12312321321'));
-        $this->assertSame(false, $zip_code->validateZipCode('dsabcasdsa'));
+        $zip_code = new ZipCode('89563-8733');
+        $this->assertSame(true, $zip_code->isValid());
+
+        $invalid_zip = new ZipCode('dsadasdas');
+        $this->assertSame(false, $invalid_zip->isValid());
     }
 }
