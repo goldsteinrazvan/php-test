@@ -4,9 +4,11 @@ declare(strict_types=1);
 
 namespace Shipping;
 
+use Exception;
+
 use Shipping\ZipCode;
 
-class Controller
+class ShippingController
 {
     public function __construct()
     {
@@ -22,7 +24,12 @@ class Controller
      */
     public function getEstimatedDelivery(string $zip_code, array $range = null): string 
     {   
-        // @todo - check if zip codes exist, otherwise return error
+        $zip = new ZipCode();
+
+        $validZip = $zip->validateZipCode($zip_code);
+        if (!$validZip) {
+            throw new Exception('Invalid zip code submitted');
+        }
         // @todo - load historical data
         // @todo - filter historical data based on zip code and range
         // @todo - get estimated delivery
