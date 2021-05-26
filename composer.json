@@ -1,8 +1,8 @@
 {
-    "name": "elliotjreed/php-package-boilperplate",
+    "name": "razvangoldstein/php-test",
     "license": "MIT",
     "type": "project",
-    "description": "Example PHP package.",
+    "description": "PHP Test",
     "autoload": {
         "psr-4" : {
             "Shipping\\" : "src/Shipping"
