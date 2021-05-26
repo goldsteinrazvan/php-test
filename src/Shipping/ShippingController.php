@@ -59,6 +59,8 @@ class ShippingController
      */
     private function getHistoricalData(string $zip_code, array $range): array
     {
+        $file_contents = file_get_contents(__DIR__.'/../../data/shipping.json');
+        $data = json_decode($file_contents);
         return [];
     }
 }

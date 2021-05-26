@@ -26,8 +26,8 @@ class ZipCode
      * @return - array with existing zip codes
      */
     private function loadZipCodes(): array 
-    {
-      $data = file_get_contents('/development/personal/php-test/data/zip_codes.json');
+    { 
+      $data = file_get_contents(__DIR__.'/../../data/zip_codes.json');
       return json_decode($data);
     }
 }
