@@ -23,4 +23,12 @@ class ShippingRepositoryTest extends TestCase
             $this->assertSame('Invalid range submitted.', $e->getMessage());
         }
     }
+
+    public function testGetHistoricalData(): void
+    {   
+      $zip_code = new ZipCode('72329');
+      $repository = new ShippingRepository();
+
+      $this->assertSame(count([]),count($repository->getHistoricalData($zip_code, [0, 1])));
+    }
 }

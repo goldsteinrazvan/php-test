@@ -15,9 +15,8 @@ class ShippingRepository
     }
 
      /**
-     * @todo - add functionality to read and filter data file
-     * 
      * Get historical data based on zip code and range
+     * 
      * @param {ZipCode} $zip_code: zip code to get estimate for
      * @param {array} $range: date range for which historical data should be used
      * @return {array} array with historical data
@@ -36,26 +35,48 @@ class ShippingRepository
       $start_date = $range[0];
       $end_date = $range[1];
 
-      $response = array_map(function ($item) use ($zip_code, $start_date, $end_date) {
+      $response = array_filter($data, function ($item) use ($zip_code, $start_date, $end_date) {
         if ($item['zip_code'] == $zip_code->getZipCode()) {
           if ($item['shipment_date'] >= $start_date && $item['shipment_date'] <= $end_date) {
             return $item;
           }
-        }
-      }, $data);
+        } 
+      });
       
       return $response;
     }
 
     /**
-     * @todo - calculate average based on historical data
-     * 
-     * Get estimated delivery for given data
-     * @param {array} $data: historical data that should be used
-     * @return {string} date string with estimated delivery date 
+     * Get estimated delivery duration for given data
+     * @param {array} $data: data that should be used
+     * @return {int} estimated duration in seconds
      */
-    public function getEstimate(array $data): string
+    public function getEstimatedDuration(array $data): string
+    {   
+        $total = 0;
+
+        for ($i = 0; $i < count($data); $i++) {
+          $duration = $data[$i]['delivered_date'] - $data[$i]['shipment_date'];
+          $total += $duration;
+        }
+
+        $estimated_duration = $total / $count($data);
+
+        return intval(round($estimated_duration));
+    }
+
+    /**
+     * @todo - create date string
+     * @todo - add optional date parameter
+     * @todo - move this function to a utils class
+     * 
+     * Create date string from current time using optional offset parameter
+     * 
+     * @param {int} $offset - optional, in seconds.
+     * @return {string} date string
+     */
+    public static function createDateString(int $offset = null)
     {
-        return '';
+
     }
 }

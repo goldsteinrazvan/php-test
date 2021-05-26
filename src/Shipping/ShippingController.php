@@ -34,8 +34,10 @@ class ShippingController
         $shipping_repository = new ShippingRepository();
         
         $data = $shipping_repository->getHistoricalData($zip, $range);
-
-        return $shipping_repository->getEstimate($data);
+        
+        $duration = $shipping_repository->getEstimatedDuration($data);
+        
+        return ShippingRepository::createDateString($duration);
     }
 }
 
