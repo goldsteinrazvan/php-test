@@ -10,7 +10,7 @@ Just a simple PHP test.
 - Run `composer install` in project root.
 
 ## How to run
-- Will be added later.
+- Run `php public/index.php` in your terminal.
 
 ## How to test
 - Run `vendor/bin/phpunit`.
