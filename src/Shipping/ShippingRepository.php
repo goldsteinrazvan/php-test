@@ -59,8 +59,8 @@ class ShippingRepository
 
         $total = 0;
 
-        for ($i = 0; $i < count($data); $i++) {
-          $duration = $data[$i]['delivered_date'] - $data[$i]['shipment_date'];
+        foreach ($data as $item) {
+          $duration = $item['delivered_date'] - $item['shipment_date'];
           $total += $duration;
         }
 
