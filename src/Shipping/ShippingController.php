@@ -6,8 +6,9 @@ namespace Shipping;
 
 use Exception;
 
-use \Shipping\ZipCode;
+use Shipping\ZipCode;
 use Shipping\ShippingRepository;
+use Shipping\Utils;
 
 class ShippingController
 {
@@ -37,7 +38,9 @@ class ShippingController
         
         $duration = $shipping_repository->getEstimatedDuration($data);
         
-        return ShippingRepository::createDateString($duration);
+        $timestamp = 0;
+
+        return Utils::createDateString($timestamp);
     }
 }
 

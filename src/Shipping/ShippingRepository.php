@@ -64,19 +64,4 @@ class ShippingRepository
 
         return intval(round($estimated_duration));
     }
-
-    /**
-     * @todo - create date string
-     * @todo - add optional date parameter
-     * @todo - move this function to a utils class
-     * 
-     * Create date string from current time using optional offset parameter
-     * 
-     * @param {int} $offset - optional, in seconds.
-     * @return {string} date string
-     */
-    public static function createDateString(int $offset = null)
-    {
-
-    }
 }
