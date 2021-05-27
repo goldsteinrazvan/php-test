@@ -31,6 +31,15 @@ class ShippingController
         if (!$zip->isValid()) {
             throw new Exception('Invalid zip code submitted');
         }
+
+        // if range is not set, default is now - 10 days
+        if (!isset($range)) {
+            $now = time();
+            $from = $now - (10 * 24 * 60 * 60);
+
+            $range = [];
+            array_push($range, $from, $now);
+        }
         
         $shipping_repository = new ShippingRepository();
         
@@ -38,9 +47,9 @@ class ShippingController
         
         $duration = $shipping_repository->getEstimatedDuration($data);
         
-        $timestamp = 0;
+        $delivery_date = time() + $duration;
 
-        return Utils::createDateString($timestamp);
+        return Utils::createDateString($delivery_date, 'Y-m-d');
     }
 }
 
