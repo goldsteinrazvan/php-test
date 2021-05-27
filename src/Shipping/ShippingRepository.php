@@ -51,7 +51,7 @@ class ShippingRepository
      * @param {array} $data: data that should be used
      * @return {int} estimated duration in seconds
      */
-    public function getEstimatedDuration(array $data): string
+    public function getEstimatedDuration(array $data): int
     {   
         $total = 0;
 
