@@ -18,6 +18,7 @@ class ShippingController
 
     /**
      * @todo: add validation for range
+     * @todo: if only one value is provided in range, set the start and end to last month (based on the value in range)
      * 
      * Get estimated delivery time based on a zip code and optional range
      * @param {string} $zip_code: zip code to get estimate for
