@@ -53,6 +53,10 @@ class ShippingRepository
      */
     public function getEstimatedDuration(array $data): int
     {   
+        if (count($data) < 1) {
+          throw new Exception('Could not get estimated duration. Data set is empty.');
+        } 
+
         $total = 0;
 
         for ($i = 0; $i < count($data); $i++) {
@@ -60,7 +64,7 @@ class ShippingRepository
           $total += $duration;
         }
 
-        $estimated_duration = $total / $count($data);
+        $estimated_duration = $total / count($data);
 
         return intval(round($estimated_duration));
     }
