@@ -11,8 +11,6 @@ class Utils
     }
 
     /**
-     * @todo - create date string
-     * 
      * Create date string from timestamp 
      * 
      * @param {int} $timestamp
