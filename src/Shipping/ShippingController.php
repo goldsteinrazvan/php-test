@@ -17,8 +17,19 @@ class ShippingController
     }
 
     /**
-     * @todo: add validation for range
-     * @todo: if only one value is provided in range, set the start and end to last month (based on the value in range)
+     * @todo: if only one value is provided in range, use the beginning and end of previous month.
+     * the logic would be something like: 
+     *  - extract current year from the provided value (a timestamp)
+     *  - extract the current month from the provided value (a timestamp), return the numerical value of the month
+     * 
+     *  - previous_month = current month - 1, except if current month is 01 (January), then previous_month is 12 (December).
+     *  - year = current year or current year - 1 if current month is 01 (January).
+     * 
+     *  - days_previous_month = get amount of days in previous_month (30/31 or 28/29 if month is February and depending if year is leap year)
+     * 
+     *  - range_start = timestamp for the 1st of previous_month of year, 
+     *  - range_end = timestamp for days_previous_month of previous_month of year
+     * 
      * 
      * Get estimated delivery time based on a zip code and optional range
      * @param {string} $zip_code: zip code to get estimate for
